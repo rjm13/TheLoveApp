@@ -2,11 +2,15 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {View, Text, StyleSheet} from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import Spice from '../screens/Spice';
+import Me from '../screens/Me';
+import Bond from '../screens/Bond';
+import Shop from '../screens/ShopScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -16,58 +20,180 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
-      <BottomTab.Screen
-        name="TabOne"
-        component={TabOneNavigator}
+      //initialRouteName="Spice"
+      tabBarOptions={{ 
+        activeTintColor: 'gold',
+        style: {
+          backgroundColor: '#2b292b',
+          height: 60,
+          paddingBottom: 4
+      }
+        }}>
+        <BottomTab.Screen
+        name="Me"
+        component={MeNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
+        name="Shop"
+        component={ShopNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="shopping-cart" color={color} />,
         }}
       />
+      <BottomTab.Screen
+        name="Spice"
+        component={SpiceNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="pepper-hot" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Bond"
+        component={BondNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="hand-holding-heart" color={color} />,
+        }}
+      />
+      
     </BottomTab.Navigator>
   );
 }
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
-function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
+function TabBarIcon(props: { name: React.ComponentProps<typeof FontAwesome5>['name']; color: string }) {
+  return <FontAwesome5 size={25} style={{ marginBottom: -3 }} {...props} />;
 }
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const SpiceStack = createStackNavigator<TabOneParamList>();
 
-function TabOneNavigator() {
+function SpiceNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+    <SpiceStack.Navigator>
+      <SpiceStack.Screen
+        name="Spice"
+        component={Spice}
+        options={{ 
+          headerShown: false,
+          headerTitle: 'Shop',
+          headerStyle: {
+            backgroundColor: 'transparent',
+          },
+          headerRight: () => (
+            <View style={{
+                flexDirection: 'row',
+                alignItems: 'center'
+                        }}
+            >
+                <FontAwesome5.Button 
+                    name='music'
+                    size={20}
+                    backgroundColor='transparent'
+                    style={{ paddingHorizontal: 20 }}
+                    onPress={() => alert('Link to sexy Spotify Playlist')}
+                />
+                
+            </View>
+        ), 
+        }}
       />
-    </TabOneStack.Navigator>
+    </SpiceStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const ShopStack = createStackNavigator<TabTwoParamList>();
 
-function TabTwoNavigator() {
+function ShopNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+    <ShopStack.Navigator>
+      <ShopStack.Screen
+        name="Shop"
+        component={Shop}
+        options={{ 
+          headerRight: () => (
+            <View style={{
+                flexDirection: 'row',
+                alignItems: 'center'
+                        }}
+            >
+                <FontAwesome5.Button 
+                    name='shopping-cart'
+                    size={20}
+                    backgroundColor='transparent'
+                    style={{ paddingHorizontal: 20 }}
+                    //onPress={() => { navigation.navigate('SearchScreen') }}
+                />
+                <FontAwesome5.Button 
+                    name='ellipsis-v'
+                    size={20}
+                    backgroundColor='transparent'
+                    style={{ paddingHorizontal: 20 }}
+                    //onPress={() => { navigation.navigate('SearchScreen') }}
+                />
+                
+            </View>
+        ),   
+          headerTitle: null,
+          headerStyle: {
+            backgroundColor: 'transparent',
+          },
+          headerTitleStyle: {
+              fontSize: 16,
+          },
+           }}
       />
-    </TabTwoStack.Navigator>
+    </ShopStack.Navigator>
+  );
+}
+
+const MeStack = createStackNavigator<TabTwoParamList>();
+
+function MeNavigator() {
+  return (
+    <MeStack.Navigator>
+      <MeStack.Screen
+        name="Me"
+        component={Me}
+        options={{ 
+          headerTitle: 'My Profile' ,
+          headerStyle: {
+            backgroundColor: '#2b292b',
+          },
+          headerTitleStyle: {
+              fontSize: 16,
+          },
+          headerTitleAlign: 'center',
+          headerShown: false,
+        }}
+      />
+    </MeStack.Navigator>
+  );
+}
+
+const BondStack = createStackNavigator<TabTwoParamList>();
+
+function BondNavigator() {
+  return (
+    <BondStack.Navigator>
+      <BondStack.Screen
+        name="Bond"
+        component={Bond}
+        options={{ 
+          headerTitle: 'Bond',
+          headerStyle: {
+            backgroundColor: '#2b292b',
+          },
+          headerTitleStyle: {
+              fontSize: 16,
+          },
+          headerTitleAlign: 'center',
+        }}
+      />
+    </BondStack.Navigator>
   );
 }
