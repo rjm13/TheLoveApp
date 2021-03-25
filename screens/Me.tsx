@@ -15,7 +15,7 @@ import { RadioButton } from 'react-native-paper';
 
 
 
-const Me = () => {
+const Me = ({navigation}) => {
 
     const modalRef = useRef<Modalize>(null);
 
@@ -96,17 +96,22 @@ const Me = () => {
             <View>
 
                 <View style={styles.headerblock}>
-                    <View style={styles.nameblock}>
-                        <FontAwesome5 
-                            name='mars'
-                            size={20}
-                            color='purple'
-                            style={{paddingRight: 20}}
-                        />
-                        <Text style={styles.title}>
-                            Pierre Woodman
-                        </Text>      
-                    </View>
+                    <TouchableOpacity
+                        onPress={() => {alert('To see stats: take mojo quiz, see results, set love language');}}>
+                        <View style={styles.nameblock}>
+                            <FontAwesome5 
+                                name='mars'
+                                size={20}
+                                color='purple'
+                                style={{paddingRight: 20}}
+                            />
+                            
+                            <Text style={styles.title}>
+                                Pierre Woodman
+                            </Text> 
+
+                        </View>
+                    </ TouchableOpacity>
 
                     <View style={styles.qrblock}>
                         <AntDesign 
@@ -173,9 +178,11 @@ const Me = () => {
             </View>
 
             <View style={styles.footer}>
-                <Text style={styles.title}>
-                    Settings
-                </Text>
+                <TouchableOpacity onPress={ () => navigation.navigate('Settings')}>
+                    <Text style={styles.paragraph}>
+                        Settings
+                    </Text>
+                </TouchableOpacity>
             </View>
 
         <StatusBar style="dark" />
@@ -291,7 +298,8 @@ const styles = StyleSheet.create({
       flex: 1,
       width: Dimensions.get('window').width,
       height: Dimensions.get('window').height,
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      backgroundColor: '#2b292ba5'
       
     },
     title: {

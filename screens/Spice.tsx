@@ -13,7 +13,7 @@ const SpiceHomeScreen = () => {
 
 
   return (
-    <View>
+    <View style={styles.container}>
       <ScrollView
         stickyHeaderIndices={[0]}
       >
@@ -98,7 +98,7 @@ const SpiceHomeScreen = () => {
       imageStyle={{ borderRadius: 16}}
       >
       <LinearGradient 
-        colors={['transparent', '#000']}
+        colors={['transparent', '#161516']}
         style={{ width: '100%', height: 330,  }} />
 
       </ImageBackground>
@@ -111,9 +111,7 @@ const SpiceHomeScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#161516'
   },
   headerrow: {
     flexDirection: 'row', 

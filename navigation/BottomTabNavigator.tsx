@@ -1,9 +1,11 @@
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import * as React from 'react';
+import React, {useState} from 'react';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {View, Text, StyleSheet} from 'react-native';
+import { Searchbar } from 'react-native-paper';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -11,6 +13,8 @@ import Spice from '../screens/Spice';
 import Me from '../screens/Me';
 import Bond from '../screens/Bond';
 import Shop from '../screens/ShopScreen';
+import Settings from '../screens/Settings';
+import ShopTabNavigator from './ShopTabNavigator';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -18,13 +22,15 @@ const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 export default function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
+
+
   return (
     <BottomTab.Navigator
       //initialRouteName="Spice"
       tabBarOptions={{ 
         activeTintColor: 'gold',
         style: {
-          backgroundColor: '#2b292b',
+          backgroundColor: '#000',
           height: 60,
           paddingBottom: 4
       }
@@ -109,12 +115,20 @@ function SpiceNavigator() {
 const ShopStack = createStackNavigator<TabTwoParamList>();
 
 function ShopNavigator() {
+
+  
+
   return (
     <ShopStack.Navigator>
       <ShopStack.Screen
         name="Shop"
         component={Shop}
         options={{ 
+          headerLeft: () => (
+           <View>
+
+           </View>
+          ),
           headerRight: () => (
             <View style={{
                 flexDirection: 'row',
@@ -125,14 +139,14 @@ function ShopNavigator() {
                     name='shopping-cart'
                     size={20}
                     backgroundColor='transparent'
-                    style={{ paddingHorizontal: 20 }}
+                    style={{ paddingHorizontal: 15 }}
                     //onPress={() => { navigation.navigate('SearchScreen') }}
                 />
-                <FontAwesome5.Button 
-                    name='ellipsis-v'
+                <FontAwesome.Button 
+                    name='navicon'
                     size={20}
                     backgroundColor='transparent'
-                    style={{ paddingHorizontal: 20 }}
+                    style={{ paddingHorizontal: 15 }}
                     //onPress={() => { navigation.navigate('SearchScreen') }}
                 />
                 
@@ -140,7 +154,7 @@ function ShopNavigator() {
         ),   
           headerTitle: null,
           headerStyle: {
-            backgroundColor: 'transparent',
+            backgroundColor: '#2b292ba5',
           },
           headerTitleStyle: {
               fontSize: 16,
@@ -171,6 +185,21 @@ function MeNavigator() {
           headerShown: false,
         }}
       />
+      <MeStack.Screen
+        name="Settings"
+        component={Settings}
+        options={{ 
+          headerTitle: 'Settings' ,
+          headerStyle: {
+            backgroundColor: '#161516',
+          },
+          headerTitleStyle: {
+              fontSize: 16,
+          },
+          headerTitleAlign: 'center',
+          headerShown: false,
+        }}
+      />
     </MeStack.Navigator>
   );
 }
@@ -184,14 +213,7 @@ function BondNavigator() {
         name="Bond"
         component={Bond}
         options={{ 
-          headerTitle: 'Bond',
-          headerStyle: {
-            backgroundColor: '#2b292b',
-          },
-          headerTitleStyle: {
-              fontSize: 16,
-          },
-          headerTitleAlign: 'center',
+          headerShown: false     
         }}
       />
     </BondStack.Navigator>

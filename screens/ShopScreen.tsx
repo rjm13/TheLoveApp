@@ -1,8 +1,12 @@
 import React, {useState} from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, ScrollView } from 'react-native';
 import { Searchbar } from 'react-native-paper';
+import {StatusBar} from 'expo-status-bar';
+
 import Carousel from 'react-native-snap-carousel';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+
+import NavMenu from '../navigation/navmenu';
 
 
 const data = [
@@ -29,29 +33,6 @@ const data = [
 ]
 
 
-function SearchBar () {
-
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const onChangeSearch = query => setSearchQuery(query);
-
-  return (
-    <View>
-      
-      <Searchbar
-        placeholder="Search for a product"
-        onChangeText={onChangeSearch}
-        value={searchQuery}
-        iconColor='purple'
-        style={styles.search}
-        inputStyle={styles.searchtext}
-      />
-
-
-    </View>
-  );
-};
-
 const Item = ({name, gender}) => {
 
 
@@ -73,60 +54,58 @@ const ShopScreen = () => {
       />
   );
 
-  return (
-    <View>
+  function SearchBar () {
 
-      <View style={styles.searchblock}>
-        {SearchBar()}
-      </View>
-
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
-
-      <FontAwesome5 
-          name='caret-left'
-          color='gray'
-          size={20}
-          style={{
-              paddingHorizontal: 20,
-              paddingVertical: 12,     
-              backgroundColor: 'transparent',
-          }}
-      />
-
-        <Carousel
-                data={data}
-                renderItem={renderItem}
-                sliderWidth={260}
-                itemWidth={260}
-              />
-
-      <FontAwesome5 
-          name='caret-right'
-          color='gray'
-          size={20}
-          style={{
-              paddingHorizontal: 20,
-              paddingVertical: 12,     
-              backgroundColor: 'transparent',
-          }}
-      />
-      </View>
-
-      <View style={{alignItems: 'center'}}>
-        <Text style={styles.title}>
-          Toys - Vibs, Dildos, buttplugs
-        </Text>
-        <Text style={styles.title}>
-          Clothes - lingere, constumes
-        </Text>
-        <Text style={styles.title}>
-          Fetish - bdsm gear
-        </Text>
+    const [searchQuery, setSearchQuery] = useState('');
+  
+    const onChangeSearch = query => setSearchQuery(query);
+  
+    return (
+      <View>
         
+        <Searchbar
+          placeholder="Search"
+          onChangeText={onChangeSearch}
+          value={searchQuery}
+          iconColor='purple'
+          style={{
+            height: 35,
+            width: '89%',
+            marginHorizontal: 20,
+            borderRadius: 8,
+            backgroundColor: '#a1a1a1',
+          }}
+          inputStyle={{fontSize: 16,}}
+        />
+  
+  
       </View>
+    );
+  };
+
+  return (
+
+    <View style={styles.container}>
+
+      <View style={{ backgroundColor: 'transparent'}}>
+        <View>
+          <SearchBar />
+        </View>
+        
+        <View>
+          <NavMenu />
+        </View>
+      </View>
+
+      <ScrollView>
+        <View style={{ height: 1600}}>
+          <Text style={{ color: 'white'}}> test</Text>
+        </View>
+      </ScrollView>
 
       
       
+      <StatusBar style="light" />
     </View>
   );
 }
@@ -134,9 +113,10 @@ const ShopScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#2b292ba5'
+    // flex: 1,
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
   containernew: {
     alignItems: 'center',
