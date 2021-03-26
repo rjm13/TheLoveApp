@@ -2,57 +2,52 @@ import React, {useState} from 'react';
 import { Text, View, StyleSheet, ScrollView } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import {StatusBar} from 'expo-status-bar';
+import { useRoute } from '@react-navigation/native';
 
 import Carousel from 'react-native-snap-carousel';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import NavMenu from '../navigation/navmenu';
+import ToysFlatList from '../components/ToysFlatList';
 
 
-const data = [
-  {
-      id: '1',
-      name: 'Meghan',
-      gender: 'female'
-  },
-  {
-      id: '2',
-      name: 'Joe BigDick',
-      gender: 'male'
-  },
-  {
-      id: '3',
-      name: 'Anal Angel',
-      gender: 'trans'
-  },
-  {
-      id: '2',
-      name: 'Alexis Texis',
-      gender: 'female',
-  },
-]
-
-
-const Item = ({name, gender}) => {
-
-
-  return (
-      <View style={styles.containernew}>
-          <Text style={styles.title}>
-              {name}
-          </Text>
-      </View>
-  );
-}
 
 const ShopScreen = () => {
 
-  const renderItem = ({ item }) => (
-    <Item 
-      name={item.name}
-      gender={item.gender}
-      />
-  );
+  const route = useRoute();
+
+    const {selectedId} = route.params;
+
+    console.log(selectedId);
+
+    function renderElement () {
+        if(selectedId === '1'){
+            return (<View>
+              <Text style={{ color: 'white'}}>
+                Test 1
+              </Text>
+            </View>);
+        }
+        else if(selectedId === '2' ){
+            return (<View>
+              <Text style={{ color: 'white'}}>
+                Test
+              </Text>
+            </View>);
+        }
+        else if(selectedId === '3' ){
+            return <ToysFlatList />;
+        }
+        else if(selectedId === '4' ){
+            return (<View>
+              <Text style={{ color: 'white'}}>
+                Test 4
+              </Text>
+            </View>);
+        }
+        
+    }
+
 
   function SearchBar () {
 
@@ -97,11 +92,10 @@ const ShopScreen = () => {
         </View>
       </View>
 
-      <ScrollView>
-        <View style={{ height: 1600}}>
-          <Text style={{ color: 'white'}}> test</Text>
-        </View>
-      </ScrollView>
+      <View style={{ alignSelf: 'center', height: '84%'}}>
+        {renderElement()}
+      </View>
+      
 
       
       

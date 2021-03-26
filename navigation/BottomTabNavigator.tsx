@@ -13,7 +13,11 @@ import Spice from '../screens/Spice';
 import Me from '../screens/Me';
 import Bond from '../screens/Bond';
 import Shop from '../screens/ShopScreen';
+
+import EditProfile from '../screens/EditProfile';
 import Settings from '../screens/Settings';
+import Partner from '../screens/Partner';
+
 import ShopTabNavigator from './ShopTabNavigator';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
@@ -39,7 +43,7 @@ export default function BottomTabNavigator() {
         name="Me"
         component={MeNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="user-alt" color={color} />,
         }}
       />
       <BottomTab.Screen
@@ -189,15 +193,45 @@ function MeNavigator() {
         name="Settings"
         component={Settings}
         options={{ 
-          headerTitle: 'Settings' ,
+          headerTitle: 'App Settings' ,
           headerStyle: {
             backgroundColor: '#161516',
           },
           headerTitleStyle: {
-              fontSize: 16,
+              fontSize: 18,
           },
           headerTitleAlign: 'center',
-          headerShown: false,
+         
+        }}
+      />
+      <MeStack.Screen
+        name="EditProfile"
+        component={EditProfile}
+        options={{ 
+          headerTitle: 'Edit Profile' ,
+          headerStyle: {
+            backgroundColor: '#161516',
+          },
+          headerTitleStyle: {
+              fontSize: 18,
+          },
+          headerTitleAlign: 'center',
+         
+        }}
+      />
+      <MeStack.Screen
+        name="Partner"
+        component={Partner}
+        options={{ 
+          headerTitle: null ,
+          headerStyle: {
+            backgroundColor: '#2b292ba5',
+          },
+          headerTitleStyle: {
+              fontSize: 18,
+          },
+          headerTitleAlign: 'center',
+         
         }}
       />
     </MeStack.Navigator>

@@ -177,15 +177,16 @@ const Me = ({navigation}) => {
 
             </View>
 
-            <View style={styles.footer}>
-                <TouchableOpacity onPress={ () => navigation.navigate('Settings')}>
+            <TouchableOpacity onPress={ () => navigation.navigate('Settings')}>
+                <View style={styles.footer}>
                     <Text style={styles.paragraph}>
                         Settings
                     </Text>
-                </TouchableOpacity>
-            </View>
+                </View>
+            </TouchableOpacity>
+            
 
-        <StatusBar style="dark" />
+        <StatusBar style="light" />
 
             <Portal>
                 <Modalize
