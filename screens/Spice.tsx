@@ -9,7 +9,7 @@ import GuidesFlatList from '../components/GuidesFlatList';
 import GamesFlatList from '../components/GamesFlatList';
 
 
-const SpiceHomeScreen = () => {
+const SpiceHomeScreen = ({navigation}) => {
 
 
   return (
@@ -19,18 +19,18 @@ const SpiceHomeScreen = () => {
       >
         <View>
           <View style={styles.headerrow}> 
-            <FontAwesome5.Button 
-                name='book'
+            <FontAwesome5 
+                name='book-reader'
                 size={20}
-                backgroundColor='transparent'
-                style={{ paddingHorizontal: 20, marginTop: 30, }}
-                onPress={() => alert('Redord an audio short story')}
+                color='#fff'
+                style={{ paddingHorizontal: 30, marginTop: 40, }}
+                onPress={() => navigation.navigate('AudioStoryHome')}
             />
-            <FontAwesome5.Button 
-                name='music'
+            <FontAwesome5 
+                name='award'
                 size={20}
-                backgroundColor='transparent'
-                style={{ paddingHorizontal: 20, marginTop: 30, }}
+                color='#fff'
+                style={{ paddingHorizontal: 30, marginTop: 40, }}
                 onPress={() => alert('Link to sexy Spotify Playlist')}
             />
           </View>

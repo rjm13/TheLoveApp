@@ -91,6 +91,40 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
                 </ScrollView>
 
             </View>
+
+            <View style={styles.tile}>
+                <View style={styles.tileheader}>
+                    <FontAwesome 
+                        name='lock'
+                        color='gold'
+                        size={20}
+                        style={{
+                            marginRight: 10
+                        }}
+                    />
+                    <Text style={styles.title}>
+                        Moxie
+                    </Text>
+                </View>   
+
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 10}}>
+                    <Text style={[styles.paragraph, {color: 'white'}]}>
+                        Kink Score
+                    </Text>
+                    <Text style={[styles.paragraph, {color: 'white'}]}>
+                       8/10
+                    </Text>
+                </View>
+
+                <View style={{ flexDirection: 'row', justifyContent: 'center', marginVertical: 10}}>
+                    <Text style={[styles.paragraph, {color: '#ffffffa5'}]}>
+                        View quiz results
+                    </Text>
+
+                </View>
+
+            </View>
+
             
         </View>
     );

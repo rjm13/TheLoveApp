@@ -16,11 +16,14 @@ const ShopScreen = () => {
 
   const route = useRoute();
 
-    const {selectedId} = route.params;
+    const selectedId = route.params;
 
     console.log(selectedId);
 
     function renderElement () {
+
+
+
         if(selectedId === '1'){
             return (<View>
               <Text style={{ color: 'white'}}>

@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React, {useState} from 'react';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import IonIcons from 'react-native-vector-icons/IonIcons';
 import {View, Text, StyleSheet} from 'react-native';
 import { Searchbar } from 'react-native-paper';
 
@@ -13,10 +14,12 @@ import Spice from '../screens/Spice';
 import Me from '../screens/Me';
 import Bond from '../screens/Bond';
 import Shop from '../screens/ShopScreen';
+import AudioPlay from '../screens/AudioPlay';
 
 import EditProfile from '../screens/EditProfile';
 import Settings from '../screens/Settings';
 import Partner from '../screens/Partner';
+import AudioStoryHome from '../screens/AudioStoryHome';
 
 import ShopTabNavigator from './ShopTabNavigator';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
@@ -100,10 +103,9 @@ function SpiceNavigator() {
                 alignItems: 'center'
                         }}
             >
-                <FontAwesome5.Button 
-                    name='music'
+                <FontAwesome5 
+                    name='award'
                     size={20}
-                    backgroundColor='transparent'
                     style={{ paddingHorizontal: 20 }}
                     onPress={() => alert('Link to sexy Spotify Playlist')}
                 />
@@ -112,6 +114,75 @@ function SpiceNavigator() {
         ), 
         }}
       />
+      <SpiceStack.Screen
+        name="AudioStoryHome"
+        component={AudioStoryHome}
+        options={{ 
+          headerShown: false,
+          headerTitle: null,
+          headerStyle: {
+            backgroundColor: 'transparent',
+          },
+          headerRight: () => (
+            <View style={{
+                flexDirection: 'row',
+                alignItems: 'center'
+                        }}
+            >
+                <Ionicons.Button 
+                    name='md-filter'
+                    size={22}
+                    backgroundColor='transparent'
+                    style={{ paddingHorizontal: 10 }}
+                    onPress={() => alert('Link to sexy Spotify Playlist')}
+                />
+                <FontAwesome.Button 
+                    name='star'
+                    size={20}
+                    backgroundColor='transparent'
+                    style={{ paddingHorizontal: 10 }}
+                    onPress={() => alert('Link to sexy Spotify Playlist')}
+                />
+                
+            </View>
+        ), 
+        }}
+      />
+      <SpiceStack.Screen
+        name="AudioPlay"
+        component={AudioPlay}
+        options={{ 
+          headerShown: false,
+          headerTitle: null,
+          headerStyle: {
+            backgroundColor: 'transparent',
+          },
+          headerRight: () => (
+            <View style={{
+                flexDirection: 'row',
+                alignItems: 'center'
+                        }}
+            >
+                <Ionicons.Button 
+                    name='md-filter'
+                    size={22}
+                    backgroundColor='transparent'
+                    style={{ paddingHorizontal: 10 }}
+                    onPress={() => alert('Link to sexy Spotify Playlist')}
+                />
+                <FontAwesome.Button 
+                    name='star'
+                    size={20}
+                    backgroundColor='transparent'
+                    style={{ paddingHorizontal: 10 }}
+                    onPress={() => alert('Link to sexy Spotify Playlist')}
+                />
+                
+            </View>
+        ), 
+        }}
+      />
+      
     </SpiceStack.Navigator>
   );
 }
