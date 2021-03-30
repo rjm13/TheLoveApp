@@ -20,6 +20,7 @@ import EditProfile from '../screens/EditProfile';
 import Settings from '../screens/Settings';
 import Partner from '../screens/Partner';
 import AudioStoryHome from '../screens/AudioStoryHome';
+import RecordAudioScreen from '../screens/RecordAudioScreen';
 
 import ShopTabNavigator from './ShopTabNavigator';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
@@ -136,6 +137,33 @@ function SpiceNavigator() {
                     style={{ paddingHorizontal: 10 }}
                     onPress={() => alert('Link to sexy Spotify Playlist')}
                 />
+                <FontAwesome.Button 
+                    name='star'
+                    size={20}
+                    backgroundColor='transparent'
+                    style={{ paddingHorizontal: 10 }}
+                    onPress={() => alert('Link to sexy Spotify Playlist')}
+                />
+                
+            </View>
+        ), 
+        }}
+      />
+      <SpiceStack.Screen
+        name="RecordAudio"
+        component={RecordAudioScreen}
+        options={{ 
+          headerShown: false,
+          headerTitle: null,
+          headerStyle: {
+            backgroundColor: 'transparent',
+          },
+          headerRight: () => (
+            <View style={{
+                flexDirection: 'row',
+                alignItems: 'center'
+                        }}
+            >
                 <FontAwesome.Button 
                     name='star'
                     size={20}

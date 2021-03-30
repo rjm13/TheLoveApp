@@ -48,7 +48,7 @@ const AudioPlay  = ({navigation}) => {
 
     const [position, setPosition] = useState(0); //position in milliseconds
 
-    const [slideLength, setSlideLength] = useState(248000);
+    const [slideLength, setSlideLength] = useState(0);
 
     function SetPosition(value) {
         setPosition(value)
@@ -75,6 +75,9 @@ const AudioPlay  = ({navigation}) => {
             {shouldPlay: true}
         );
         setSound(sound);
+
+        let time = await sound.getStatusAsync();
+        setSlideLength(time.durationMillis);
 
         if (isPlaying === false) {
             console.log('Playing Sound');

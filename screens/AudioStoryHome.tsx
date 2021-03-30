@@ -67,7 +67,7 @@ const AudioStoryHome = ({navigation}) => {
                     size={22}
                     color='#fff'
                     style={{ paddingHorizontal: 10 }}
-                    onPress={() => alert('Link to sexy Spotify Playlist')}
+                    onPress={() => navigation.navigate('RecordAudio')}
                 />
                 <FontAwesome
                     name='star'
