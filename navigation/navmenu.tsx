@@ -124,12 +124,12 @@ const DATA = [
   
   const styles = StyleSheet.create({
     container: {
-      marginLeft: 20
+      //paddingLeft: 20
     },
     content: {
       marginTop: 20,
       marginBottom: 10,
-      marginRight: 20
+      marginLeft: 20
       
       
     },

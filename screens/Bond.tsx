@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Text, View, StyleSheet, ScrollView, ImageBackground, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, ImageBackground, TouchableOpacity, Dimensions } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -117,14 +117,26 @@ const Bond = () => {
             <View style={styles.background}>
                 <View style={styles.popup}>
                     { isVisible ? (
-                        <View style={styles.popupblock}>
-                            <Text style={styles.title}>
-                                Date Idea
-                            </Text>
-                            <Text style={styles.popuptext}>
-                                Test popup
-                            </Text>
-                        </View>
+                        <ImageBackground 
+                        source={(require('../assets/heart-white.png'))}
+                        style={{
+                                //resizeMode: 'fit',
+                                //width: 300,
+                                //height: 220,
+                        }}
+                        imageStyle={{
+                            resizeMode: 'contain',
+                        }}
+                        >
+                            <View style={styles.popupblock}>
+                                <Text style={styles.title}>
+                                    Date Idea
+                                </Text>
+                                <Text style={styles.popuptext}>
+                                    Test popup
+                                </Text>
+                            </View>
+                        </ImageBackground>
                     ) : false } 
                 </View>
             </View>
@@ -235,6 +247,7 @@ const styles = StyleSheet.create({
   popupblock: {
     marginHorizontal: 40,
     marginVertical: 100,
+    width: 200,
     alignItems: 'center',
   },
   popuptext: {
