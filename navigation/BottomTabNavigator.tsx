@@ -22,6 +22,9 @@ import Partner from '../screens/Partner';
 import AudioStoryHome from '../screens/AudioStoryHome';
 import RecordAudioScreen from '../screens/RecordAudioScreen';
 
+import Items from '../screens/ShopScreens/Plugs';
+import ItemPage from '../screens/ShopScreens/ItemPage';
+
 import ShopTabNavigator from './ShopTabNavigator';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
@@ -252,12 +255,91 @@ function ShopNavigator() {
                     style={{ paddingHorizontal: 15 }}
                     //onPress={() => { navigation.navigate('SearchScreen') }}
                 />
-                
             </View>
         ),   
           headerTitle: null,
           headerStyle: {
-            backgroundColor: '#2b292ba5',
+            backgroundColor: 'transparent',
+          },
+          headerTitleStyle: {
+              fontSize: 16,
+          },
+           }}
+      />
+      <ShopStack.Screen
+        name="Items"
+        component={Items}
+        options={{ 
+          // headerLeft: () => (
+          //  <View>
+
+          //  </View>
+          // ),
+          headerRight: () => (
+            <View style={{
+                flexDirection: 'row',
+                alignItems: 'center'
+                        }}
+            >
+                <FontAwesome5.Button 
+                    name='shopping-cart'
+                    size={20}
+                    backgroundColor='transparent'
+                    style={{ paddingHorizontal: 15 }}
+                    //onPress={() => { navigation.navigate('SearchScreen') }}
+                />
+                <FontAwesome.Button 
+                    name='navicon'
+                    size={20}
+                    backgroundColor='transparent'
+                    style={{ paddingHorizontal: 15 }}
+                    //onPress={() => { navigation.navigate('SearchScreen') }}
+                />
+            </View>
+        ),   
+          headerTitle: null,
+          headerStyle: {
+            backgroundColor: 'transparent',
+          },
+          headerTitleStyle: {
+              fontSize: 16,
+          },
+           }}
+      />
+      <ShopStack.Screen
+        name="ItemPage"
+        component={ItemPage}
+        options={{ 
+          // headerLeft: () => (
+          //  <View>
+
+          //  </View>
+          // ),
+          headerRight: () => (
+            <View style={{
+                flexDirection: 'row',
+                alignItems: 'center'
+                        }}
+            >
+                <FontAwesome5.Button 
+                    name='shopping-cart'
+                    size={20}
+                    backgroundColor='transparent'
+                    style={{ paddingHorizontal: 15 }}
+                    //onPress={() => { navigation.navigate('SearchScreen') }}
+                />
+                <FontAwesome.Button 
+                    name='navicon'
+                    size={20}
+                    backgroundColor='transparent'
+                    style={{ paddingHorizontal: 15 }}
+                    //onPress={() => { navigation.navigate('SearchScreen') }}
+                />
+            </View>
+        ),   
+          headerTitle: null,
+          headerStyle: {
+            backgroundColor: 'transparent',
           },
           headerTitleStyle: {
               fontSize: 16,
@@ -324,7 +406,7 @@ function MeNavigator() {
         options={{ 
           headerTitle: null ,
           headerStyle: {
-            backgroundColor: '#2b292ba5',
+            backgroundColor: 'transparent',
           },
           headerTitleStyle: {
               fontSize: 18,

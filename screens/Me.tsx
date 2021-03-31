@@ -102,8 +102,8 @@ const Me = ({navigation}) => {
                             <FontAwesome5 
                                 name='mars'
                                 size={20}
-                                color='purple'
-                                style={{paddingRight: 20}}
+                                color='gold'
+                                style={{paddingRight: 20, opacity: .8}}
                             />
                             
                             <Text style={styles.title}>
@@ -318,6 +318,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         width: '100%',
         marginTop: 30,
+        alignItems: 'center',
     },
     qrblock: {
         margin: 20,

@@ -7,6 +7,7 @@ import { StatusBar } from 'expo-status-bar';
 
 import GuidesFlatList from '../components/GuidesFlatList';
 import GamesFlatList from '../components/GamesFlatList';
+import HolidayCard from '../components/HolidayCard';
 
 
 const SpiceHomeScreen = ({navigation}) => {
@@ -26,57 +27,64 @@ const SpiceHomeScreen = ({navigation}) => {
                 style={{ paddingHorizontal: 30, marginTop: 40, }}
                 onPress={() => navigation.navigate('AudioStoryHome')}
             />
-            <FontAwesome5 
-                name='award'
-                size={20}
-                color='#fff'
-                style={{ paddingHorizontal: 30, marginTop: 40, }}
-                onPress={() => alert('Link to sexy Spotify Playlist')}
-            />
+            
           </View>
         </View>
 
-        <View style={styles.holidaycard}>
-            <Text style={styles.title}>
-              May 24
-            </Text>
-            <Text style={styles.subtitle}>
-              It's Steak and Blowjob Day!
-            </Text>
-          </View>
-
+        
+        <View>
+          <HolidayCard />
+        </View>
+        
         <View style={styles.block}>
 
 
-          <View style={styles.card}>
+          <View style={[styles.card, { backgroundColor: '#509beb'}]}>
             <View style={{alignItems: 'center', margin: 10 }}>
               <Text style={[styles.subtitle, {backgroundColor: '#614c6ea6', padding: 2, borderRadius: 10, opacity: .8}]}>
                 45/150
               </Text>
             </View>
-            <View style={[styles.subtitleblock, {backgroundColor: '#614c6ea6'}]}>
-              <Text style={styles.title}>
-                Break the Ice
-              </Text>
-              <Text style={styles.subtitle}>
-                150 intimate questions
-              </Text>
+
+
+            <View>
+              <LinearGradient 
+                colors={['#363636a5', '#1f64ad']}
+                style={styles.subtitleblock}
+                start={{ x: 0, y: 1 }}
+                end={{ x: 0, y: 0 }}
+                >
+                  <Text style={styles.title}>
+                    Break the Ice
+                  </Text>
+                  <Text style={styles.subtitle}>
+                    150 intimate questions
+                  </Text>
+                </LinearGradient>
             </View>  
           </View>
 
-          <View style={styles.card}>
+          <View style={[styles.card, { backgroundColor: '#a070c2'}]}>
           <View style={{alignItems: 'center', margin: 10 }}>
               <Text style={[styles.subtitle, {backgroundColor: '#614c4ea6', padding: 2, borderRadius: 10, opacity: .8}]}>
                 12/32
               </Text>
             </View>
-            <View style={[styles.subtitleblock, {backgroundColor: '#614c3ea6'}]}>
+
+            <View>
+            <LinearGradient 
+                colors={['#363636a5', '#693a8a']}
+                style={styles.subtitleblock}
+                start={{ x: 0, y: 1 }}
+                end={{ x: 0, y: 0 }}
+                >
               <Text style={styles.title}>
                 Test the Limits
               </Text>
               <Text style={styles.subtitle}>
                 32 bedroom challenges
               </Text>
+              </LinearGradient>
             </View>  
           </View>
 
@@ -98,7 +106,7 @@ const SpiceHomeScreen = ({navigation}) => {
       imageStyle={{ borderRadius: 16}}
       >
       <LinearGradient 
-        colors={['transparent', '#161516']}
+        colors={['transparent', '#000']}
         style={{ width: '100%', height: 330,  }} />
 
       </ImageBackground>
@@ -111,7 +119,7 @@ const SpiceHomeScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#161516'
+    backgroundColor: '#000'
   },
   headerrow: {
     flexDirection: 'row', 
@@ -164,10 +172,9 @@ const styles = StyleSheet.create({
   card: {
     width: '45%',
     height: 200,
-    //backgroundColor: 'blue',
     borderRadius: 16,
-    borderColor: 'gray',
-    borderWidth: 0.5,
+    //borderColor: 'gray',
+    //borderWidth: 0.5,
     margin: 10,
     justifyContent: 'space-between',
 
@@ -181,14 +188,16 @@ const styles = StyleSheet.create({
     //justifyContent: 'flex-end',
   },
   holidaycard: {
-    marginTop: 280,
+    //marginTop: 200,
     width: '90%',
+    height: 100,
     alignItems: 'center',
-    borderWidth: 0.5,
-    borderColor: 'gray',
+    //borderWidth: 0.5,
+    //borderColor: 'gray',
     borderRadius: 16,
     margin: 10,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    
     
     
   },

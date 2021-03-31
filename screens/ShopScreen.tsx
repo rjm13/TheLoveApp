@@ -16,14 +16,21 @@ const ShopScreen = () => {
 
   const route = useRoute();
 
-    const selectedId = route.params;
+    //const selectedId = route.params;
+    const {selectedId} = route.params;
 
     console.log(selectedId);
 
     function renderElement () {
 
 
-
+      if(selectedId === undefined){
+        return (<View>
+          <Text style={{ color: 'white'}}>
+            Test 1
+          </Text>
+        </View>);
+    }
         if(selectedId === '1'){
             return (<View>
               <Text style={{ color: 'white'}}>
@@ -63,17 +70,19 @@ const ShopScreen = () => {
         
         <Searchbar
           placeholder="Search"
+          placeholderTextColor='#ffffffa5'
           onChangeText={onChangeSearch}
+          //onIconPress={onChangeSearch}
           value={searchQuery}
-          iconColor='purple'
+          iconColor='#ffffffa5'
           style={{
             height: 35,
             width: '89%',
             marginHorizontal: 20,
             borderRadius: 8,
-            backgroundColor: '#a1a1a1',
+            backgroundColor: '#363636a5',
           }}
-          inputStyle={{fontSize: 16,}}
+          inputStyle={{fontSize: 16, color: '#fff'}}
         />
   
   
@@ -110,7 +119,7 @@ const ShopScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#2b292ba5'
+    backgroundColor: '#000'
     // flex: 1,
     // alignItems: 'center',
     // justifyContent: 'center',

@@ -10,36 +10,36 @@ import CommunicationFlatList from '../components/CommunicationFlatList';
 import TherapyFlatList from '../components/TherapyFlatList';
 
 
-
 const data = [
   {
       id: '1',
-      title: 'Blog Title',
+      title: 'The Art of the Sensual Massage',
       subtitle: 'Blog subtitle',
-      author: 'Author',
-      image: { uri: ''}
+      author: 'Amy McDonald',
+      image: {uri: 'https://miro.medium.com/max/6300/1*AuC-4OBAmb9HhfI-mQvd1A.jpeg'}
+    },
+  {
+    id: '2',
+    title: '10 Tricks to Try',
+    subtitle: 'Blog subtitle',
+    author: 'Tina Fey',
+    image: {uri: 'https://post.healthline.com/wp-content/uploads/2020/09/4703-couple_bed-1200x628-facebook-1200x628.jpg'}
+    
   },
   {
-    id: '1',
-    title: 'Blog Title 2',
+    id: '3',
+    title: 'The Working Man',
     subtitle: 'Blog subtitle',
-    author: 'Author',
-    image: { uri: ''}    
-  },
+    author: 'Collin Flannery',
+    image: {uri: 'https://miro.medium.com/max/6300/1*AuC-4OBAmb9HhfI-mQvd1A.jpeg'}
+},
   {
-    id: '1',
-    title: 'Blog Title 3',
-    subtitle: 'Blog subtitle',
-    author: 'Author',
-    image: { uri: ''}
-  },
-  {
-    id: '1',
-    title: 'Blog Title 4',
-    subtitle: 'Blog subtitle',
-    author: 'Author',
-    image: { uri: ''}
-  },
+    id: '4',
+    title: 'Sex in 2021',
+    subtitle: 'Blog ',
+    author: 'Miley Cyrus',
+    image: {uri: 'https://post.healthline.com/wp-content/uploads/2020/09/4703-couple_bed-1200x628-facebook-1200x628.jpg'}
+},
 ]
 
 
@@ -48,19 +48,31 @@ const Item = ({title, subtitle, author, image}) => {
 
   return (
     <View style={styles.card}>
-        <View style={{alignItems: 'center', margin: 10 }}>
-        <Text style={[styles.subtitle, {backgroundColor: '#614c6ea6', padding: 2, borderRadius: 10, opacity: .8}]}>
-            {author}
-        </Text>
-        </View>
-        <View style={[styles.subtitleblock, {backgroundColor: '#614c6ea6'}]}>
-            <Text style={styles.title}>
-                {title}
-            </Text>
-            <Text style={styles.subtitle}>
-                {subtitle}
-            </Text>
-        </View>  
+        <ImageBackground 
+            source={image}
+            style={{
+                    resizeMode: 'cover',
+                    //width: 300,
+                    //height: 220,
+            }}
+            imageStyle={{ borderRadius: 16, borderWidth: 0.5, borderColor: '#fff'}}
+        >
+            <View style={{ justifyContent: 'space-between', height: 220}}>
+                <View style={{alignItems: 'center', margin: 10 }}>
+                    <Text style={[styles.subtitle, {backgroundColor: '#000000a5', padding: 2, borderRadius: 10, opacity: .8}]}>
+                        {author}
+                    </Text>
+                </View>
+                <View style={[styles.subtitleblock, {backgroundColor: '#363636a5',}]}>
+                    <Text style={styles.title}>
+                        {title}
+                    </Text>
+                    <Text style={styles.subtitle}>
+                        {subtitle}
+                    </Text>
+                </View>
+            </View>
+        </ImageBackground>  
     </View>
   );
 }
@@ -74,6 +86,7 @@ const Bond = () => {
         title={item.title}
         author={item.author}
         subtitle={item.subtitle}
+        image={item.image}
         />
     );
 
@@ -83,20 +96,21 @@ const Bond = () => {
 
             <View>
             <View style={styles.headerrow}> 
-                <FontAwesome5.Button 
-                    name='podcast'
+                <FontAwesome 
+                    name='heart'
                     size={20}
-                    backgroundColor='transparent'
+                    color='#fff'
                     style={{ paddingHorizontal: 20, marginTop: 30, }}
-                    onPress={() => alert('Redord an audio short story')}
+                    //onLongPress={() => !setIsVisible}
+                    onPress={() => setIsVisible(isVisible ? false : true)} 
                 />
-                <FontAwesome5.Button 
+                {/* <FontAwesome5 
                     name='ellipsis-v'
                     size={20}
-                    backgroundColor='transparent'
+                    color='#fff'
                     style={{ paddingHorizontal: 20, marginTop: 30, }}
                     onPress={() => alert('Link to sexy Spotify Playlist')}
-                />
+                /> */}
             </View>
             </View>
 
@@ -111,18 +125,7 @@ const Bond = () => {
                                 Test popup
                             </Text>
                         </View>
-                    ) : false }
-                    
-                        <TouchableOpacity 
-                            onLongPress={() => setIsVisible(true)}
-                            onPress={() => setIsVisible(false)} >
-                            <FontAwesome
-                                name='heart'
-                                size={30}
-                                color='#fff'
-                                style={{  }}
-                            /> 
-                        </TouchableOpacity>    
+                    ) : false } 
                 </View>
             </View>
 
@@ -153,7 +156,7 @@ const Bond = () => {
         imageStyle={{ borderRadius: 16}}
         >
         <LinearGradient 
-        colors={['transparent', '#161516']}
+        colors={['transparent', '#000']}
         style={{ width: '100%', height: 350,  }} />
 
         </ImageBackground>
@@ -168,7 +171,7 @@ const styles = StyleSheet.create({
     //flex: 1,
     //alignItems: 'center',
     //justifyContent: 'center',
-    backgroundColor: '#161516'
+    backgroundColor: '#000'
   },
   containernew: {
     // alignItems: 'center',
@@ -186,7 +189,7 @@ const styles = StyleSheet.create({
     // backgroundColor: '#422e42'
   },
   title: {
-    fontSize: 20,
+    fontSize: 16,
     color: '#fff',
     fontWeight: 'bold',
     paddingHorizontal: 10,
@@ -207,7 +210,7 @@ const styles = StyleSheet.create({
   },
   background: {
     width: '100%',
-    height: 330,
+    height: 280,
     justifyContent: 'flex-end',
   },
   image: {
@@ -220,7 +223,9 @@ const styles = StyleSheet.create({
   },
   headerrow: {
     flexDirection: 'row', 
-    justifyContent: 'flex-end', 
+    justifyContent: 'space-between', 
+    marginVertical: 20,
+    marginHorizontal: 10,
   },
   popup: {
     justifyContent: 'center',
@@ -238,16 +243,7 @@ const styles = StyleSheet.create({
     marginTop: 20
   },
   card: {
-    width: '100%',
-    height: 200,
-    //backgroundColor: 'blue',
-    borderRadius: 16,
-    borderColor: 'gray',
-    borderWidth: 0.5,
     marginVertical: 20,
-    //marginHorizontal: 20,
-    justifyContent: 'space-between',
-
   },
   subtitle: {
     fontSize: 11,
@@ -261,7 +257,8 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 16,
     borderBottomRightRadius: 16,
     //backgroundColor: '#614c6ea6',
-    height: 60, 
+    //height: 80, 
+    padding: 5,
     justifyContent: 'center'
   },
 });

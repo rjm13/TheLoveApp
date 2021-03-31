@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
 
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {useNavigation} from '@react-navigation/native';
 
 const data = [
     {
@@ -50,9 +51,12 @@ const data = [
 
 const Item = ({title, image}) => {
 
+    const navigation = useNavigation();
+
     return (
         
         <View style={styles.container}>
+            <TouchableOpacity onPress={() => navigation.navigate ('Items')}>
             <View style={styles.tile}>
                 <View>
                     <Image 
@@ -62,17 +66,18 @@ const Item = ({title, image}) => {
                             width: 100,
                             resizeMode: 'cover',
                             borderRadius: 50,
-                            marginVertical: 20,
+                            marginTop: 20,
                         }}
                     
                     />
                 </View>
-                <View>
+                <View style={{ marginTop: 5 }}>
                     <Text style={styles.title}>
                         {title}
                     </Text>
                 </View>
             </View>
+            </TouchableOpacity>
             
         </View>
         
@@ -119,7 +124,7 @@ const ToysFlatList = () => {
 const styles = StyleSheet.create({
     container: {
         //justifyContent: 'center', 
-        marginTop: 20
+        marginTop: 0
         
         
     },
@@ -134,7 +139,7 @@ const styles = StyleSheet.create({
         
     },
     title: {
-        color: 'white',
+        color: '#ffffffa5',
         fontWeight: 'bold',
         fontSize: 16,
     },

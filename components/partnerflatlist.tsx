@@ -52,6 +52,7 @@ const Item = ({name, gender, id}) => {
                     style={{
                         marginVertical: 10,
                         marginHorizontal: 20,
+                        opacity: .8
                     }}
                 />
                 <View>
@@ -153,7 +154,7 @@ const styles = StyleSheet.create({
         borderColor: '#fff',
         borderRadius: 16,
         width: 320,
-        backgroundColor: '#2b292b'
+        backgroundColor: '#000'
       },
     rowcontainer: {
         alignItems: 'center',
@@ -161,7 +162,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         width: 300,
         flexDirection: 'row',
-        backgroundColor: '#2b292b'
+        backgroundColor: 'transparent'
     },
     header: {
         flexDirection: 'row', 

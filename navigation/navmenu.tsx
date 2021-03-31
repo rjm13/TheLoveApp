@@ -71,14 +71,15 @@ const DATA = [
     const renderItem = ({ item, index }) => {
       const backgroundColor = item.id === selectedId ? 'gold' : 'transparent';
       const color = item.id === selectedId ? '#000' : 'gold';
-      
+      const opacity = item.id === selectedId ? 1 : 0.7;
 
       return (
         <Item
           title={item.title}
           onPress={() => ScrollToThisThing(index, item)}
-          style={{ backgroundColor }}
+          style={{ backgroundColor, opacity }}
           textstyle={{ color }}
+          //opacity={{ opacity }}
         />
       );
     };
