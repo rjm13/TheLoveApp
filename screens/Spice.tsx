@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Text, View, StyleSheet, FlatList, ScrollView, ImageBackground } from 'react-native';
+import { Text, View, StyleSheet, FlatList, ScrollView, ImageBackground, Dimensions, TouchableWithoutFeedback } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -15,18 +15,21 @@ const SpiceHomeScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <LinearGradient 
+        colors={['#FF00FFa5', '#000', '#000']}
+        style={{ width: '100%', height: '100%', position: 'absolute' }} />
       <ScrollView
         stickyHeaderIndices={[0]}
       >
         <View>
           <View style={styles.headerrow}> 
-            <FontAwesome5 
+            {/* <FontAwesome5 
                 name='book-reader'
                 size={20}
                 color='#fff'
                 style={{ paddingHorizontal: 30, marginTop: 40, }}
                 onPress={() => navigation.navigate('AudioStoryHome')}
-            />
+            /> */}
             
           </View>
         </View>
@@ -39,9 +42,9 @@ const SpiceHomeScreen = ({navigation}) => {
         <View style={styles.block}>
 
 
-          <View style={[styles.card, { backgroundColor: '#509beb'}]}>
+          <View style={[styles.card, { backgroundColor: 'green'}]}>
             <View style={{alignItems: 'center', margin: 10 }}>
-              <Text style={[styles.subtitle, {backgroundColor: '#614c6ea6', padding: 2, borderRadius: 10, opacity: .8}]}>
+              <Text style={[styles.subtitle, {backgroundColor: '#363636a5', padding: 2, borderRadius: 10, opacity: .8}]}>
                 45/150
               </Text>
             </View>
@@ -49,7 +52,7 @@ const SpiceHomeScreen = ({navigation}) => {
 
             <View>
               <LinearGradient 
-                colors={['#363636a5', '#1f64ad']}
+                colors={['#363636a5', '#363636a5']}
                 style={styles.subtitleblock}
                 start={{ x: 0, y: 1 }}
                 end={{ x: 0, y: 0 }}
@@ -64,31 +67,63 @@ const SpiceHomeScreen = ({navigation}) => {
             </View>  
           </View>
 
-          <View style={[styles.card, { backgroundColor: '#a070c2'}]}>
+          <View style={[styles.card, { backgroundColor: '#FF0000a5'}]}>
           <View style={{alignItems: 'center', margin: 10 }}>
-              <Text style={[styles.subtitle, {backgroundColor: '#614c4ea6', padding: 2, borderRadius: 10, opacity: .8}]}>
+              <Text style={[styles.subtitle, {backgroundColor: '#363636a5', padding: 2, borderRadius: 10, opacity: .8}]}>
                 12/32
               </Text>
             </View>
 
             <View>
-            <LinearGradient 
-                colors={['#363636a5', '#693a8a']}
-                style={styles.subtitleblock}
-                start={{ x: 0, y: 1 }}
-                end={{ x: 0, y: 0 }}
-                >
-              <Text style={styles.title}>
-                Test the Limits
-              </Text>
-              <Text style={styles.subtitle}>
-                32 bedroom challenges
-              </Text>
-              </LinearGradient>
+              <LinearGradient 
+                  colors={['#363636a5', '#363636a5']}
+                  style={styles.subtitleblock}
+                  start={{ x: 0, y: 1 }}
+                  end={{ x: 0, y: 0 }}
+                  >
+                <Text style={styles.title}>
+                  Test the Limits
+                </Text>
+                <Text style={styles.subtitle}>
+                  32 bedroom challenges
+                </Text>
+                </LinearGradient>
             </View>  
           </View>
-
         </View>
+
+        <TouchableWithoutFeedback onPress={() => navigation.navigate('AudioStoryHome')}>
+        <View style={{ marginHorizontal: 10,}}>
+            <ImageBackground 
+              source={{ uri: 'http://reallifee.com/wp/wp-content/uploads/2011/05/night-sky.jpg'}}
+              style={{ 
+                width: '100%',
+                height: 100,
+                justifyContent: 'center',
+                alignSelf: 'center'
+              }}
+              imageStyle={{ 
+                resizeMode: 'cover',
+                borderRadius: 20,
+              }}
+           >
+            {/* <FontAwesome5 
+              name='moon'
+              size={30}
+              color='#ffffffa5'
+            /> */}
+            <View style={{ paddingHorizontal: 20,}}>
+              <Text style={{  color: 'white', fontSize: 22, fontWeight: 'bold', fontStyle: 'italic' }}>
+                Tales After Dark
+              </Text>
+              <Text style={styles.subtitle}>
+                A collection of audio short stories
+              </Text>
+            </View>
+
+            </ImageBackground>
+          </View>
+          </TouchableWithoutFeedback>
 
         <View style={{marginVertical: 10}}>
           <GuidesFlatList />
@@ -100,7 +135,7 @@ const SpiceHomeScreen = ({navigation}) => {
 
       </ScrollView>
 
-      <ImageBackground
+      {/* <ImageBackground
       source={{ uri: 'https://media.architecturaldigest.com/photos/5e6656e53a149b0008a4636a/master/w_1600%2Cc_limit/Dive_Motel_Rooms-11.jpg'}}
       style={styles.image}
       imageStyle={{ borderRadius: 16}}
@@ -109,7 +144,7 @@ const SpiceHomeScreen = ({navigation}) => {
         colors={['transparent', '#000']}
         style={{ width: '100%', height: 330,  }} />
 
-      </ImageBackground>
+      </ImageBackground> */}
 
       <StatusBar style="light" />
     </View>
@@ -150,7 +185,7 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: '#fff',
     //fontWeight: 'bold',
-    paddingHorizontal: 10,
+    paddingHorizontal: 0,
     
     
   },
@@ -166,7 +201,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     margin: 5,
-    marginVertical: 20,
+    marginTop: 10,
+    marginBottom: 20,
     
   },
   card: {
@@ -175,7 +211,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     //borderColor: 'gray',
     //borderWidth: 0.5,
-    margin: 10,
+    marginHorizontal: 10,
     justifyContent: 'space-between',
 
   },

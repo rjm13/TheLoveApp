@@ -51,11 +51,11 @@ const Item = ({title, subtitle, author, image}) => {
         <ImageBackground 
             source={image}
             style={{
-                    resizeMode: 'cover',
+                    //resizeMode: 'cover',
                     //width: 300,
                     //height: 220,
             }}
-            imageStyle={{ borderRadius: 16, borderWidth: 0.5, borderColor: '#fff'}}
+            imageStyle={{ borderRadius: 16, borderWidth: 0.1, borderColor: '#ffffffa5'}}
         >
             <View style={{ justifyContent: 'space-between', height: 220}}>
                 <View style={{alignItems: 'center', margin: 10 }}>

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Text, View, StyleSheet, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import {StatusBar} from 'expo-status-bar';
 import { useRoute } from '@react-navigation/native';
@@ -16,8 +16,8 @@ const ShopScreen = () => {
 
   const route = useRoute();
 
-    //const selectedId = route.params;
-    const {selectedId} = route.params;
+    const selectedId = route.params;
+    //const {selectedId} = route.params;
 
     console.log(selectedId);
 
@@ -77,7 +77,7 @@ const ShopScreen = () => {
           iconColor='#ffffffa5'
           style={{
             height: 35,
-            width: '89%',
+            width: 280,
             marginHorizontal: 20,
             borderRadius: 8,
             backgroundColor: '#363636a5',
@@ -94,10 +94,18 @@ const ShopScreen = () => {
 
     <View style={styles.container}>
 
-      <View style={{ backgroundColor: 'transparent'}}>
-        <View>
-          <SearchBar />
-        </View>
+      <View style={{ backgroundColor: 'transparent', marginTop: 50}}>
+      <View style={{ alignItems: 'center',justifyContent: 'space-between',flexDirection: 'row', width: Dimensions.get('window').width}}>
+                <SearchBar />
+                <FontAwesome5
+                    name='shopping-cart'
+                    color='#fff'
+                    size={20}
+                    style={{  
+                        marginRight: 20}}
+                />
+            </View>
+            
         
         <View>
           <NavMenu />

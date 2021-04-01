@@ -230,6 +230,7 @@ function ShopNavigator() {
         name="Shop"
         component={Shop}
         options={{ 
+          headerShown: false,
           headerLeft: () => (
            <View>
 
@@ -248,13 +249,13 @@ function ShopNavigator() {
                     style={{ paddingHorizontal: 15 }}
                     //onPress={() => { navigation.navigate('SearchScreen') }}
                 />
-                <FontAwesome.Button 
+                {/* <FontAwesome.Button 
                     name='navicon'
                     size={20}
                     backgroundColor='transparent'
                     style={{ paddingHorizontal: 15 }}
                     //onPress={() => { navigation.navigate('SearchScreen') }}
-                />
+                /> */}
             </View>
         ),   
           headerTitle: null,
